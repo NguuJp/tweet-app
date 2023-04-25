@@ -1,0 +1,22 @@
+<?php
+
+namespace Database\Seeders;
+
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
+use App\Models\Tweet;
+use App\Models\Image;
+
+class TweetsSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     */
+    public function run(): void
+    {
+        Tweet::factory()->count(10)->create()->each(fn ($tweet) =>
+        Image::factory()->count(4)->create()->each(fn ($image) =>
+        $tweet->images()->attach($image->id))); // 10件のツイートを作成し、それぞれに4枚の画像を紐付ける
+    }
+}
