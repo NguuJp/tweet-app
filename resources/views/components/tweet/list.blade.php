@@ -22,7 +22,7 @@
             </div>
 
             @if ($tweet->original_tweet_id)
-            <div class="mt-2 p-2 border border-gray-600 rounded-md">
+            <div class="mt-2 p-2 border border-gray-700 rounded-md">
 
                 <span class="inline-block rounded-full text-gray-600 bg-gray-100 px-2 py-1 text-xs mb-2">
                     {{ $tweet->originalTweet->user->name }}
