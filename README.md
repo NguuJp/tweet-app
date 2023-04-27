@@ -4,17 +4,21 @@
 
 ### Laravelアプリケーションの雛形をダウンロードし、プロジェクトの初期セットアップ（最新のPHPバージョンを使用）
 ```
-curl -s "https://laravel.build/example-app?php=latest" | bash
+curl -s "https://laravel.build/example-app" | bash
 ```
 ```
 cd example-app
 ```
+```
+./vendor/bin/sail up -d
+```
 
-### 現在のDockerコンテナを削除
+### 独自の設定を再設定する場合
+#### 現在のDockerコンテナを削除
 ```
 docker-compose down -v
 ```
-### Dockerイメージを再ビルド
+#### 設定を変更後、Dockerイメージを再ビルド
 ```
 ./vendor/bin/sail build --no-cache
 ```
@@ -53,6 +57,25 @@ sail build --no-cache
 ```
 sail up -d
 ```
+
+## MySQLの文字コードを変更
+docker/8.2/my.cnf
+```
+[myspld]
+characeter-set-server=utf8mb4
+collation-server=utf8mb4_bin
+
+[client]
+default-character-set=utf8mb4
+```
+docker-compose.yml
+```
+mysql:
+    //省略
+    voloumes:
+        - './docker/8.2/my.cnf:/etc/my.cnf'
+```
+
 
 ## ログイン機能追加（Laravel　Breeze）
 ```

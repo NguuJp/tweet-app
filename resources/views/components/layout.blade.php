@@ -7,8 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ $title ?? 'つぶやきアプリ' }}</title>
     @stack('css')
-    <link rel="stylesheet" href="/css/app.css">
-    <script src="/js/app.js" defer></script>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
 <body class="bg-gray-50">
